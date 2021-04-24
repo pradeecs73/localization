@@ -4,6 +4,7 @@ import { filter, map,first,reduce,tap,debounceTime,distinctUntilChanged,min
 ,max,count,concat,toArray ,every,find ,retry,switchMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import { fromEvent } from 'rxjs';
+import { FormControl,FormBuilder,Validators, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-observablemethods',
