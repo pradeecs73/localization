@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild,AfterViewInit,ElementRef } from '@angular/core';
 import {of,from,merge} from 'rxjs';
 import { filter, map,first,reduce,tap,debounceTime,distinctUntilChanged,min
-,max,count,concat,toArray ,every,find ,retry,switchMap } from 'rxjs/operators';
+,max,count,concat,toArray ,pluck,every,find ,retry,switchMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import { fromEvent } from 'rxjs';
 import { FormControl,FormBuilder,Validators, FormGroup, FormArray } from '@angular/forms';
@@ -18,13 +18,28 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
 
+        
      const squareOdd = of(1, 2, 3, 4, 5)
         .pipe(
           filter(n => n % 2 !== 0),
-          map(n => n * n)
+          map(n =>{
+           console.log("pradeep"); 
+           return   n * n
+          })
         );
-
+        
+        console.log(squareOdd);
         squareOdd.subscribe(x => console.log(x));
+
+        const source = from([
+          { name: 'Joe', age: 30 },
+          { name: 'Sarah', age: 35 }
+        ]);
+        //grab names
+        const example = source.pipe(pluck('name'));
+        //output: "Joe", "Sarah"
+        const subscribe = example.subscribe(val => console.log(val));
+
 
         map((x:any) => x * x)(of(1, 2, 3)).subscribe((v) => console.log(`value: ${v}`));
 
