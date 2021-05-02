@@ -129,6 +129,7 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     // Create an Observable out of a promise
     const data = ajax('https://jsonplaceholder.typicode.com/posts').pipe(retry(4));
     // Subscribe to begin listening for async result
+    console.log(data);
     data.subscribe({
       next(responseData) { console.log(responseData.response.slice(0,5)); },
       error(err) { console.error('Error: ' + err); },
