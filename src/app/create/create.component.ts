@@ -23,6 +23,10 @@ export class CreateComponent implements OnInit {
     this.router.navigate(['/tutorials'], { relativeTo: this.route });
   }
 
+  loadTutorial() {
+    this.store.dispatch(new TutorialActions.LoadTutorial())
+  }
+
 
   ngOnInit() {
   }

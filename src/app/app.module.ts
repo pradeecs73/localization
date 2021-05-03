@@ -12,6 +12,8 @@ import { NgrxexampleComponent } from './ngrxexample/ngrxexample.component';
 import { ReadComponent } from './read/read.component';
 import { CreateComponent } from './create/create.component';
 import { TutoriallistComponent } from './tutoriallist/tutoriallist.component';
+import { EffectsModule } from '@ngrx/effects';
+import {TutorialEffects} from './effects/tutorial.effect'
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { TutoriallistComponent } from './tutoriallist/tutoriallist.component';
     AppRoutingModule,
     StoreModule.forRoot({
       tutorial: reducer
-    })
+    }),
+    EffectsModule.forRoot([TutorialEffects])
 
   ],
   providers: [],
