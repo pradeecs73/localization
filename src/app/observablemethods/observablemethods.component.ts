@@ -83,11 +83,11 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     // Create an Observable out of a promise
     const data = ajax('https://jsonplaceholder.typicode.com/posts');
     // Subscribe to begin listening for async result
-    data.subscribe({
-      next(responseData) { console.log(responseData.response.slice(0,5)); },
-      error(err) { console.error('Error: ' + err); },
-      complete() { console.log('Completed'); }
-    });
+    data.subscribe(
+      (responseData:any)=> { console.log(responseData.response.slice(0,5)); },
+      (err:any)=> { console.error('Error: ' + err); },
+      ()=> { console.log('Completed call'); }
+    );
 
   }
 
@@ -130,11 +130,11 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     const data = ajax('https://jsonplaceholder.typicode.com/posts').pipe(retry(4));
     // Subscribe to begin listening for async result
     console.log(data);
-    data.subscribe({
-      next(responseData) { console.log(responseData.response.slice(0,5)); },
-      error(err) { console.error('Error: ' + err); },
-      complete() { console.log('Completed'); }
-    });
+    data.subscribe(
+      (responseData:any)=> { console.log(responseData.response.slice(0,5)); },
+      (err:any)=> { console.error('Error: ' + err); },
+      ()=> { console.log('Completed call'); }
+    );
 
     //In the case of switchMap operator, a project function is applied on each source value and the output of it is merged with the output Observable, and the value given is the most recent projected Observable.
 
