@@ -14,7 +14,10 @@ export class TutorialEffects {
         ofType(TutorialActions.LOAD_TUTORIAL),   
         switchMap(()=>{
                return ajax('https://jsonplaceholder.typicode.com/posts').pipe(
-                   map((posts:any) => new TutorialActions.AddTutorial({name: 'effect Tutorial', url: 'http://mysite.com'})),
+                   map((posts:any) =>{
+                    return  new TutorialActions.LoadTutorialFromEffects([{name:posts.response[0].title, url: 'http://mysite.com'},
+                      {name:posts.response[1].title, url: 'http://mysite.com'}])
+                    }),
                    catchError((error:any)=>of(1, 2, 3, 4, 5))
                )
           })

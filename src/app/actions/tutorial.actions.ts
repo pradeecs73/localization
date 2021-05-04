@@ -7,6 +7,7 @@ import { Tutorial } from './../models/tutorial.model'
 export const ADD_TUTORIAL       = '[TUTORIAL] Add'
 export const REMOVE_TUTORIAL    = '[TUTORIAL] Remove'
 export const LOAD_TUTORIAL    = '[TUTORIAL] Load'
+export const LOAD_TUTORIAL_From_Effects    = '[TUTORIAL] LoadFromEffect'
 
 // Section 3
 export class AddTutorial implements Action {
@@ -26,5 +27,12 @@ export class LoadTutorial implements Action {
 
 }
 
+export class LoadTutorialFromEffects implements Action {
+    readonly type = LOAD_TUTORIAL_From_Effects
+
+    constructor(public payload: Tutorial[]) {}
+
+}
+
 // Section 4
-export type Actions = AddTutorial | RemoveTutorial | LoadTutorial
+export type Actions = AddTutorial | RemoveTutorial | LoadTutorial | LoadTutorialFromEffects

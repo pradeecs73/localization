@@ -21,8 +21,11 @@ export function reducer(state: Tutorial[] = [initialState], action: TutorialActi
              deletedUpdatedArrayFilter.splice(action.payload, 1);
             state=[...deletedUpdatedArrayFilter];
             return state;
+
+            case TutorialActions.LOAD_TUTORIAL_From_Effects:   
+              return [...state, ...action.payload]; 
             
-        default:
+         default:
             return state;
     }
 }
