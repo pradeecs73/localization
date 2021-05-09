@@ -4,12 +4,15 @@ import { ObservablemethodsComponent } from './observablemethods/observablemethod
 import {ReactiveformsComponent} from './reactiveforms/reactiveforms.component';
 import { NgrxexampleComponent } from './ngrxexample/ngrxexample.component';
 import { TutoriallistComponent } from './tutoriallist/tutoriallist.component';
+import {configservice} from './service/config.service';
 
 const routes: Routes = [
   { path: 'observablemethod', component: ObservablemethodsComponent },
   { path: 'form', component: ReactiveformsComponent },
   { path: 'ngrx', component: NgrxexampleComponent },
-  { path: 'tutorials', component: TutoriallistComponent }
+  { path: 'tutorials', component: TutoriallistComponent,
+    resolve:{resolvedata:configservice}
+   }
  
  
 ];

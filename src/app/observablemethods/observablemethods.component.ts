@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild,AfterViewInit,ElementRef } from '@angular/core';
 import {of,from,merge} from 'rxjs';
 import { filter, map,first,reduce,tap,debounceTime,distinctUntilChanged,min
-,max,count,concat,toArray ,pluck,every,find ,retry,switchMap } from 'rxjs/operators';
+,max,count,concat,toArray ,pluck,every,find ,retry,switchMap,mergeMap,concatMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import { fromEvent } from 'rxjs';
 import { FormControl,FormBuilder,Validators, FormGroup, FormArray } from '@angular/forms';
@@ -139,8 +139,26 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     //In the case of switchMap operator, a project function is applied on each source value and the output of it is merged with the output Observable, and the value given is the most recent projected Observable.
 
     let text = of('Welcome To');
-    let case1 = text.pipe(switchMap((value) => of(value + ' Tutorialspoint!')));
+    let case1 = text.pipe(map((value) => of(value + ' Tutorialspoint! map')));
     case1.subscribe((value) => {console.log(value);});
+
+    let text2 = of('Welcome To');
+    let case2 = text2.pipe(switchMap((value) => of(value + ' Tutorialspoint! switch map')));
+    case2.subscribe((value) => {console.log(value);});
+
+    let text3 = of('Welcome To');
+    let case3 = text3.pipe(mergeMap((value) => of(value + ' Tutorialspoint! merge map')));
+    case3.subscribe((value) => {console.log(value);});
+
+    let text4 = of('Welcome To');
+    let case4 = text4.pipe(concatMap((value) => of(value + ' Tutorialspoint! concat map')));
+    case4.subscribe((value) => {console.log(value);});
+
+    ajax('https://jsonplaceholder.typicode.com/posts').pipe(
+      concatMap((post)=>of(1, 2, 3, 4, 50)
+    )).subscribe((output:any)=>{
+        console.log(output);
+    });
     
   }
 

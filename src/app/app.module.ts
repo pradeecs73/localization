@@ -13,7 +13,8 @@ import { ReadComponent } from './read/read.component';
 import { CreateComponent } from './create/create.component';
 import { TutoriallistComponent } from './tutoriallist/tutoriallist.component';
 import { EffectsModule } from '@ngrx/effects';
-import {TutorialEffects} from './effects/tutorial.effect'
+import {TutorialEffects} from './effects/tutorial.effect';
+import {configservice} from './service/config.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {TutorialEffects} from './effects/tutorial.effect'
     EffectsModule.forRoot([TutorialEffects])
 
   ],
-  providers: [],
+  providers: [configservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

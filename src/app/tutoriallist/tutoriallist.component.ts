@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Tutorial } from './../models/tutorial.model';
 import { AppState } from './../app.state';
 import * as TutorialActions from './../actions/tutorial.actions';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-tutoriallist',
@@ -16,8 +17,11 @@ export class TutoriallistComponent implements OnInit {
    tutorials: Observable<Tutorial[]>;
 
    // Section 2
-   constructor(private store: Store<AppState>) { 
+   constructor(private store: Store<AppState>,private router: Router,private route: ActivatedRoute) { 
      this.tutorials = store.select('tutorial');
+     this.route.data.subscribe((resolve:any) =>{
+          console.log(resolve.resolvedata);
+     });
    }
 
   ngOnInit(): void {
