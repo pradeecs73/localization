@@ -166,7 +166,11 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     case4.subscribe((value) => {console.log(value);});
 
     ajax('https://jsonplaceholder.typicode.com/posts').pipe(
-      concatMap((post)=> ajax('https://jsonplaceholder.typicode.com/posts/1')  
+      concatMap((post)=>{
+        console.log("inside concat");
+        console.log(post.response);
+       return  ajax('https://jsonplaceholder.typicode.com/posts/1')  
+      }
     ),catchError((error:any)=>EMPTY)).subscribe((output:any)=>{
         console.log(output.response);
     });
