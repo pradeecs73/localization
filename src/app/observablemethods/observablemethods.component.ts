@@ -1,9 +1,9 @@
 import { Component, OnInit,ViewChild,AfterViewInit,ElementRef } from '@angular/core';
 import {of,from,merge} from 'rxjs';
 import { filter, map,first,reduce,tap,debounceTime,distinctUntilChanged,min
-,max,count,concat,toArray ,pluck,every,find ,retry,switchMap,mergeMap,concatMap } from 'rxjs/operators';
+,max,count,concat,toArray ,pluck,every,find ,retry,switchMap,mergeMap,concatMap,catchError} from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
-import { fromEvent } from 'rxjs';
+import { fromEvent ,EMPTY,forkJoin} from 'rxjs';
 import { FormControl,FormBuilder,Validators, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
@@ -36,7 +36,9 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
           { name: 'Sarah', age: 35 }
         ]);
         //grab names
-        const example = source.pipe(pluck('name'));
+        const example = source.pipe(
+             pluck('name')
+          );
         //output: "Joe", "Sarah"
         const subscribe = example.subscribe(val => console.log(val));
 
@@ -51,6 +53,15 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
           reduce((acc:any, one:any) => acc + one, 0)
         )
         case1.subscribe((x:any) => console.log(x));
+
+        let test2 = of(175,50,25);
+        let case2 = test2.pipe(
+          reduce((acc:any, one:any) =>{
+            acc=acc - one;
+            return acc;
+          })
+        )
+        case2.subscribe((x:any) => console.log(x));
 
        //It is an observable same like source observable with a callback function
         let list1 = of(1, 2, 3, 4, 5, 6);  
@@ -155,9 +166,25 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     case4.subscribe((value) => {console.log(value);});
 
     ajax('https://jsonplaceholder.typicode.com/posts').pipe(
-      concatMap((post)=>of(1, 2, 3, 4, 50)
-    )).subscribe((output:any)=>{
-        console.log(output);
+      concatMap((post)=> ajax('https://jsonplaceholder.typicode.com/posts/1')  
+    ),catchError((error:any)=>EMPTY)).subscribe((output:any)=>{
+        console.log(output.response);
+    });
+
+    ajax('https://jsonplaceholder.typicode.com/posts').pipe(
+      mergeMap((post)=> ajax('https://jsonplaceholder.typicode.com/posts/1')  
+    ),catchError((error:any)=>EMPTY)).subscribe((output:any)=>{
+        console.log(output.response);
+    });
+
+    forkJoin([
+      ajax('https://jsonplaceholder.typicode.com/posts'),
+      ajax('https://jsonplaceholder.typicode.com/posts/1')
+    ]).subscribe((output:any)=>{
+        console.log("first api");
+        console.log(output[0].response);
+        console.log("second api");
+        console.log(output[1].response);
     });
     
   }

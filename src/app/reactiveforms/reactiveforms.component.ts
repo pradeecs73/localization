@@ -36,8 +36,8 @@ export class ReactiveformsComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.fb.group( {
-      userName: ['Anshul',[Validators.required,Validators.minLength(3),forbiddenNameValidator(/password/)/*forbiddenNameValidator  */]],
-      email:['dileep@gmail.com'],
+      userName: ['',[Validators.required,Validators.minLength(3),forbiddenNameValidator(/password/)/*forbiddenNameValidator  */]],
+      email:['',[Validators.required,Validators.minLength(3),Validators.pattern("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")]],
       subscribe:[false],
       password: [''],
       confirmPassword: [''],

@@ -22,7 +22,12 @@
         <button type="button" class="btn btn-secondary btn-sm m-2" (click)="addAlternateEmail()">Add emails</button>
         <input [class.is-invalid]="email.invalid &&
         email.touched" type="text" formControlName="email" class="form-control">
-        <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+        <div *ngIf="registrationForm.get('email').invalid
+            &&email.touched">
+          <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+          <small *ngIf="registrationForm.get('email').errors?.minlength" class="text-danger">Email must be at least 3 characters</small>
+          <small *ngIf="registrationForm.get('email').errors?.pattern" class="text-danger">Email pattern is wrong</small>
+        </div>
         <div formArrayName="alternateEmails" *ngFor = "let email of alternateEmails.controls; let i = index">
           <input type="text" class="form-control my-1" [formControlName]="i">
         </div>
