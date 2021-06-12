@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ObservablemethodsComponent } from './observablemethods/observablemethods.component';
 import { ReactiveformsComponent } from './reactiveforms/reactiveforms.component';
@@ -14,7 +15,10 @@ import { CreateComponent } from './create/create.component';
 import { TutoriallistComponent } from './tutoriallist/tutoriallist.component';
 import { EffectsModule } from '@ngrx/effects';
 import {TutorialEffects} from './effects/tutorial.effect';
+import { InterceptService} from './interceptor/httpconfig.interceptor';
 import {configservice} from './service/config.service';
+import { PostsComponent } from './posts/posts.component';
+
 
 @NgModule({
   declarations: [
@@ -24,20 +28,23 @@ import {configservice} from './service/config.service';
     NgrxexampleComponent,
     ReadComponent,
     CreateComponent,
-    TutoriallistComponent
+    TutoriallistComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
+
     StoreModule.forRoot({
       tutorial: reducer
     }),
     EffectsModule.forRoot([TutorialEffects])
 
   ],
-  providers: [configservice],
+  providers: [configservice,{provide: HTTP_INTERCEPTORS, useClass: InterceptService,  multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
