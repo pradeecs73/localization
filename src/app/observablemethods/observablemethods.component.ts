@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild,AfterViewInit,ElementRef } from '@angular/core';
 import {of,from,merge} from 'rxjs';
-import { filter, map,first,reduce,tap,debounceTime,distinctUntilChanged,min
+import { filter, map,first,reduce,tap,debounceTime,take,skip,distinctUntilChanged,min
 ,max,count,concat,toArray ,pluck,every,find ,retry,switchMap,mergeMap,concatMap,catchError} from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import { fromEvent ,EMPTY,forkJoin} from 'rxjs';
@@ -108,6 +108,14 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     let final_val = all_nums.pipe(max());
     final_val.subscribe(x => console.log("The Max value is "+x));
 
+    let all_take = of(1, 6, 15, 10, 58, 20, 40);
+    let final_take = all_take.pipe(take(2));
+    final_take.subscribe(x => console.log("the take values are followes "+x));
+
+    let all_skip = of(1, 6, 15, 10, 58, 20, 40);
+    let final_skip = all_skip.pipe(skip(2));
+    final_skip.subscribe(x => console.log("the skip values are followes "+x));
+
     let final_val2 = of(1, 6, 15, 10, 58, 2, 40).pipe(min());
     final_val2.subscribe(x => console.log("The Min value is "+x)); 
 
@@ -186,7 +194,10 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
       ajax('https://jsonplaceholder.typicode.com/posts/1')
     ]).subscribe((output:any)=>{
         console.log("first api");
-        console.log(output[0].response);
+        console.log(output[0].response.filter((inputobj)=>{
+            console.log("pradeep");
+            return (inputobj.userId == 1);
+        }));
         console.log("second api");
         console.log(output[1].response);
     });
