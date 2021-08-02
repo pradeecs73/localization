@@ -190,8 +190,14 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     });
 
     forkJoin([
-      ajax('https://jsonplaceholder.typicode.com/posts'),
-      ajax('https://jsonplaceholder.typicode.com/posts/1')
+      ajax('https://jsonplaceholder.typicode.com/posts').pipe(
+        (post)=> post,  
+        catchError((error:any)=>EMPTY)
+      ),
+      ajax('https://jsonplaceholder.typicode.com/posts/1').pipe(
+        (post)=> post,  
+        catchError((error:any)=>EMPTY)
+      )
     ]).subscribe((output:any)=>{
         console.log("first api");
         console.log(output[0].response.filter((inputobj)=>{
