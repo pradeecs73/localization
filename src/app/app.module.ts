@@ -19,7 +19,6 @@ import { InterceptService} from './interceptor/httpconfig.interceptor';
 import {configservice} from './service/config.service';
 import { PostsComponent } from './posts/posts.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

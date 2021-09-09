@@ -6,6 +6,7 @@ import { NgrxexampleComponent } from './ngrxexample/ngrxexample.component';
 import { TutoriallistComponent } from './tutoriallist/tutoriallist.component';
 import {configservice} from './service/config.service';
 import { PostsComponent } from './posts/posts.component';
+import { LazyloadingComponent } from './lazyloading/lazyloading.component';
 
 const routes: Routes = [
   { path: 'observablemethod', component: ObservablemethodsComponent },
@@ -14,9 +15,8 @@ const routes: Routes = [
   { path: 'posts', component: PostsComponent},
   { path: 'tutorials', component: TutoriallistComponent,
     resolve:{resolvedata:configservice}
-   }
- 
- 
+   },
+   { path: 'lazyloading', loadChildren:()=>import('./lazyloading/lazyloading.module').then(m=>m.LazyloadingModule)}
 ];
 
 @NgModule({
