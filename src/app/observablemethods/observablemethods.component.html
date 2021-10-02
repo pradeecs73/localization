@@ -10,3 +10,13 @@
   <button (click)="opertors()">operators</button>
 </div>
 
+<div style="position:absolute;left:50%;top:50%;-webkit-transform: translate(-50%,-50%);">
+    <div>
+      <p *ngFor="let user of myuser;trackBy:trackById">{{user.name}}</p>
+    </div>
+
+    <div>
+      <button (click)="assaign()">add</button>
+    </div>
+</div>
+

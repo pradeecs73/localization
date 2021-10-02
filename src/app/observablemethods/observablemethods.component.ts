@@ -16,6 +16,8 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
   @ViewChild('myinput') myinput:ElementRef;
   constructor() { }
 
+  myuser=[{"name":"Pradeep","id":1},{"name":"prasad","id":2}];
+
   ngOnInit(): void {
 
         
@@ -210,6 +212,12 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
     
   }
 
- 
+  trackById(index,user){
+    return user.id;
+  }
+
+  assaign(){
+    this.myuser=[{"name":"Pradeep","id":1},{"name":"prasad","id":2},{"name":"anil","id":3},{"name":"mahesh","id":4}];
+  }
 
 }

@@ -7,6 +7,7 @@ import { TutoriallistComponent } from './tutoriallist/tutoriallist.component';
 import {configservice} from './service/config.service';
 import { PostsComponent } from './posts/posts.component';
 import { LazyloadingComponent } from './lazyloading/lazyloading.component';
+import { MaterialComponent } from './material/material.component';
 
 const routes: Routes = [
   { path: 'observablemethod', component: ObservablemethodsComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'tutorials', component: TutoriallistComponent,
     resolve:{resolvedata:configservice}
    },
-   { path: 'lazyloading', loadChildren:()=>import('./lazyloading/lazyloading.module').then(m=>m.LazyloadingModule)}
+   { path: 'lazyloading', loadChildren:()=>import('./lazyloading/lazyloading.module').then(m=>m.LazyloadingModule)},
+   { path: 'material', component: MaterialComponent}
 ];
 
 @NgModule({

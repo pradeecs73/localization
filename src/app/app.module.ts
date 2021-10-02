@@ -18,6 +18,15 @@ import {TutorialEffects} from './effects/tutorial.effect';
 import { InterceptService} from './interceptor/httpconfig.interceptor';
 import {configservice} from './service/config.service';
 import { PostsComponent } from './posts/posts.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MaterialComponent } from './material/material.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -28,19 +37,26 @@ import { PostsComponent } from './posts/posts.component';
     ReadComponent,
     CreateComponent,
     TutoriallistComponent,
-    PostsComponent
+    PostsComponent,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-
+    MatCheckboxModule,
+    MatRadioModule,
+    MatSelectModule,
     StoreModule.forRoot({
       tutorial: reducer
     }),
-    EffectsModule.forRoot([TutorialEffects])
+    EffectsModule.forRoot([TutorialEffects]),
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   providers: [configservice,{provide: HTTP_INTERCEPTORS, useClass: InterceptService,  multi: true}],
