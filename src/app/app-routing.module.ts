@@ -8,6 +8,7 @@ import {configservice} from './service/config.service';
 import { PostsComponent } from './posts/posts.component';
 import { LazyloadingComponent } from './lazyloading/lazyloading.component';
 import { MaterialComponent } from './material/material.component';
+import { DynamiccontentComponent } from './dynamiccontent/dynamiccontent.component';
 
 const routes: Routes = [
   { path: 'observablemethod', component: ObservablemethodsComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
     resolve:{resolvedata:configservice}
    },
    { path: 'lazyloading', loadChildren:()=>import('./lazyloading/lazyloading.module').then(m=>m.LazyloadingModule)},
-   { path: 'material', component: MaterialComponent}
+   { path: 'material', component: MaterialComponent},
+   { path: 'dynamiccontent', component: DynamiccontentComponent}
 ];
 
 @NgModule({

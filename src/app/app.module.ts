@@ -28,7 +28,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { CowComponent } from './cow/cow.component';
 import { SheepComponent } from './sheep/sheep.component';
-
+import { DynamiccontentComponent } from './dynamiccontent/dynamiccontent.component';
+import { DynamiccomponentComponent } from './dynamiccomponent/dynamiccomponent.component';
+import { PlaceHolder } from './directives/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,10 @@ import { SheepComponent } from './sheep/sheep.component';
     PostsComponent,
     MaterialComponent,
     CowComponent,
-    SheepComponent
+    SheepComponent,
+    DynamiccontentComponent,
+    DynamiccomponentComponent,
+    PlaceHolder
   ],
   imports: [
     BrowserModule,
