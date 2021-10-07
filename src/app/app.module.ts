@@ -26,6 +26,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { CowComponent } from './cow/cow.component';
+import { SheepComponent } from './sheep/sheep.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     CreateComponent,
     TutoriallistComponent,
     PostsComponent,
-    MaterialComponent
+    MaterialComponent,
+    CowComponent,
+    SheepComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatNativeDateModule
 
   ],
+  entryComponents:[CowComponent,SheepComponent],
   providers: [configservice,{provide: HTTP_INTERCEPTORS, useClass: InterceptService,  multi: true}],
   bootstrap: [AppComponent]
 })

@@ -25,4 +25,10 @@
   <div><p i18n="description|app component description@@description">please change the text to preffered</p></div>
 </div>
 
+<div style="text-align:center">
+   <ng-container *ngComponentOutlet="myComponent"></ng-container>
+   <input type="button" (click)="changeDynamicComponentLoad('cow')" value="Loadcow">
+   <input type="button" (click)="changeDynamicComponentLoad('sheep')" value="Loadsheep">
+</div>
+
  <router-outlet></router-outlet> 
