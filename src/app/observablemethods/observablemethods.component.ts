@@ -202,7 +202,7 @@ export class ObservablemethodsComponent implements OnInit,AfterViewInit {
       )
     ]).subscribe((output:any)=>{
         console.log("first api");
-        console.log(output[0].response.filter((inputobj)=>{
+        console.log("single data",output[0].response.filter((inputobj)=>{
             console.log("pradeep");
             return (inputobj.userId == 1);
         }));

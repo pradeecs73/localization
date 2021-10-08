@@ -9,6 +9,7 @@ import { PostsComponent } from './posts/posts.component';
 import { LazyloadingComponent } from './lazyloading/lazyloading.component';
 import { MaterialComponent } from './material/material.component';
 import { DynamiccontentComponent } from './dynamiccontent/dynamiccontent.component';
+import { StylingcomponentComponent } from './stylingcomponent/stylingcomponent.component';
 
 const routes: Routes = [
   { path: 'observablemethod', component: ObservablemethodsComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
    },
    { path: 'lazyloading', loadChildren:()=>import('./lazyloading/lazyloading.module').then(m=>m.LazyloadingModule)},
    { path: 'material', component: MaterialComponent},
-   { path: 'dynamiccontent', component: DynamiccontentComponent}
+   { path: 'dynamiccontent', component: DynamiccontentComponent},
+   { path: 'stylingcomponent', component: StylingcomponentComponent}
 ];
 
 @NgModule({

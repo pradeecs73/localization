@@ -31,6 +31,7 @@ import { SheepComponent } from './sheep/sheep.component';
 import { DynamiccontentComponent } from './dynamiccontent/dynamiccontent.component';
 import { DynamiccomponentComponent } from './dynamiccomponent/dynamiccomponent.component';
 import { PlaceHolder } from './directives/placeholder.directive';
+import { StylingcomponentComponent } from './stylingcomponent/stylingcomponent.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PlaceHolder } from './directives/placeholder.directive';
     SheepComponent,
     DynamiccontentComponent,
     DynamiccomponentComponent,
-    PlaceHolder
+    PlaceHolder,
+    StylingcomponentComponent
   ],
   imports: [
     BrowserModule,

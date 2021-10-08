@@ -1,0 +1,29 @@
+<div [ngClass]="['one','two']" style="text-align:center;margin-top:40px">
+    My div text color
+</div>
+
+<div [ngClass]="[firstclass,secondclass]" style="text-align:center;margin-top:40px">
+    My div text color
+</div>
+
+<div [ngClass]="{'one':true,'two':false}" style="text-align:center;margin-top:40px">
+    My div text color
+</div>
+
+<div [ngClass]="classBoolean?'one':'two'" style="text-align:center;margin-top:40px">
+    My div text color
+</div>
+
+<div [ngStyle]="styleBoolean?{'background-color':'green'}:{'background-color':'red'}" style="text-align:center;margin-top:40px">
+    My div text color
+</div>
+
+<div [ngStyle]="{'color':'red','background-color':'green'}" style="text-align:center;margin-top:40px">
+    My div text color
+</div>
+
+<div style="margin-top:20px;text-align:center">
+    <img [src]="imageBoolean?'https://tineye.com/images/widgets/mona.jpg':''" alt="Los Angeles" width="200" height="200" />
+</div>
+
+
