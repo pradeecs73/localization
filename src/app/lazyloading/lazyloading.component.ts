@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {instanceservice} from './../sharedmodule/instance.service';
 
 @Component({
   selector: 'app-lazyloading',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LazyloadingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private instanceservice: instanceservice) { }
 
   ngOnInit(): void {
+    this.instanceservice.writeMessage("message from lazyloading component");
   }
 
 }

@@ -32,6 +32,7 @@ import { DynamiccontentComponent } from './dynamiccontent/dynamiccontent.compone
 import { DynamiccomponentComponent } from './dynamiccomponent/dynamiccomponent.component';
 import { PlaceHolder } from './directives/placeholder.directive';
 import { StylingcomponentComponent } from './stylingcomponent/stylingcomponent.component';
+import {SharedModule} from './sharedmodule/sharedmodule'
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { StylingcomponentComponent } from './stylingcomponent/stylingcomponent.c
     EffectsModule.forRoot([TutorialEffects]),
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    SharedModule.forRoot()
 
   ],
   entryComponents:[CowComponent,SheepComponent],

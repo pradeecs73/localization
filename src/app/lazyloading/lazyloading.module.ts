@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LazyloadingComponent } from './../lazyloading/lazyloading.component';
-
+import {SharedModule} from './../sharedmodule/sharedmodule'
 
 
 const formRoutes: Routes = [
@@ -14,7 +14,7 @@ const formRoutes: Routes = [
 
 @NgModule({
   declarations: [LazyloadingComponent],
-  imports: [CommonModule, FormsModule,RouterModule.forChild(formRoutes)],
+  imports: [CommonModule, FormsModule,RouterModule.forChild(formRoutes),SharedModule],
   exports: [RouterModule]
 })
 export class LazyloadingModule {}
