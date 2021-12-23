@@ -22,20 +22,20 @@ export class ReadComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-       this.store.select(getName).subscribe((name:any)=>{
+ 
+       this.store.select(getName,[{"name":"pradeep","url":"sdfhhsdfh"}]).subscribe((name:any)=>{
          console.log(name);
        });
 
-       this.store.select(getUrl).subscribe((url:any)=>{
+       this.store.select(getUrl,[{"name":"pradeep","url":"sdfhhsdfh"}]).subscribe((url:any)=>{
         console.log(url);
       });
 
-      this.store.pipe(select(getName)).subscribe((name:any)=>{
+      this.store.pipe(select(getName,[{"name":"pradeep","url":"sdfhhsdfh"}])).subscribe((name:any)=>{
         console.log(name);
       });
 
-      this.store.pipe(select(getUrl)).subscribe((name:any)=>{
+      this.store.pipe(select(getUrl,[{"name":"pradeep","url":"sdfhhsdfh"}])).subscribe((name:any)=>{
         console.log(name);
       });
 
