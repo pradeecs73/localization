@@ -33,6 +33,7 @@ import { DynamiccomponentComponent } from './dynamiccomponent/dynamiccomponent.c
 import { PlaceHolder } from './directives/placeholder.directive';
 import { StylingcomponentComponent } from './stylingcomponent/stylingcomponent.component';
 import {SharedModule} from './sharedmodule/sharedmodule'
+import { userreducer } from './reducers/user.reducer';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {SharedModule} from './sharedmodule/sharedmodule'
     MatRadioModule,
     MatSelectModule,
     StoreModule.forRoot({
-      tutorial: reducer
+      tutorial: reducer,
+      user:userreducer
     }),
     EffectsModule.forRoot([TutorialEffects]),
     MatInputModule,

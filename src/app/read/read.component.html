@@ -1,10 +1,24 @@
-<div class="right" *ngIf="tutorials">
+<div class="right">
 
+  <div  *ngIf="tutorials">
     <h3>Tutorials</h3>
     <ul>
       <li (click)="delTutorial(i)" *ngFor="let tutorial of tutorials | async; let i = index">
         <a href="javascript:void(0)">{{ tutorial.name }}</a>
       </li>
     </ul>
-  
+  </div><br><br>
+
+  <div  *ngIf="users">
+    <h3>User</h3>
+    <ul>
+      <li (click)="deleteUser(user.id)" *ngFor="let user of users; let i = index">
+        <a href="javascript:void(0)">{{ user.name }}</a><br>
+        <a href="javascript:void(0)">{{ user.age }}</a>
+      </li>
+    </ul>
   </div>
+
+  
+
+</div>

@@ -5,6 +5,7 @@ import { Tutorial } from './../models/tutorial.model'
 import * as TutorialActions from './../actions/tutorial.actions';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as UserActions from './../actions/user.actions'
 
 @Component({
   selector: 'app-create',
@@ -29,6 +30,10 @@ export class CreateComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  addUser(id,name,age){
+    this.store.dispatch(new UserActions.AddUser({id:id,name:name,age:age}));
   }
 
 }

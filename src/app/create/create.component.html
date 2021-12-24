@@ -1,9 +1,21 @@
 <div class="left">
 
+<div>
     <input type="text" placeholder="name" #name>
     <input type="text" placeholder="url" #url>
   
     <button (click)="addTutorial(name.value,url.value)">Add a Tutorial</button>
     <button (click)="movetotutoriallist()">Tutorial List</button>
     <button (click)="loadTutorial()">Load Tutorial</button>
-  </div>
+</div><br><br>
+
+<div>Ngrx Entity</div>
+<div>
+    <input type="text" placeholder="id" #id>
+    <input type="text" placeholder="name" #username>
+    <input type="text" placeholder="age" #userage>
+  
+    <button (click)="addUser(id.value,username.value,userage.value)">Add User</button>
+</div>
+
+</div>
