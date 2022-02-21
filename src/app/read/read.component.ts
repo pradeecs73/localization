@@ -27,7 +27,7 @@ export class ReadComponent implements OnInit {
 
   ngOnInit() {
  
-       this.store.select(getName,[{"name":"pradeep","url":"sdfhhsdfh"}]).subscribe((name:any)=>{
+       this.store.select(getName,"gdfgdfg").subscribe((name:any)=>{
          console.log(name);
        });
 

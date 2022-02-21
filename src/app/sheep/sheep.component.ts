@@ -1,3 +1,4 @@
+import { AnimationStyleMetadata } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sheep.component.css']
 })
 export class SheepComponent implements OnInit {
-
+  name:any="pradeep";
   constructor() { }
 
   ngOnInit(): void {
